@@ -34,7 +34,7 @@ def save_price(price):
     client = bigquery.Client()
 
     # ID of table to append to.
-    table_id = "personal-crypto-over-9000.cryptocurrencies.price"
+    table_id = "personal-crypto-over-9000.cryptocurrencies.prices"
 
     current_datetime = time.strftime('%Y-%m-%d %H:%M:%S')
 
