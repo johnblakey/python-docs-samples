@@ -15,7 +15,7 @@ def add_btc_price():
 
 def get_coinbase_spot_price():
     # Get secrets from Secret Google Service
-    project_id = "useful-autumn-324602"
+    project_id = "personal-crypto-over-9000"
     api_key = access_secret_version(project_id, "coinbase-api-key-jb", "1")
     api_secret = access_secret_version(project_id, "coinbase-api-secret-jb", "2")
 
@@ -34,12 +34,12 @@ def save_price(price):
     client = bigquery.Client()
 
     # ID of table to append to.
-    table_id = "useful-autumn-324602.bitcoin_prices.price_details"
+    table_id = "personal-crypto-over-9000.cryptocurrencies.price_details"
 
     current_datetime = time.strftime('%Y-%m-%d %H:%M:%S')
 
     rows_to_insert = [
-        {u"btc_price": price, u"timestamp": current_datetime, u"currency": "USD"}
+        {u"btc_price": price, u"price_timestamp": current_datetime, u"currency": "USD"}
     ]
 
     errors = client.insert_rows_json(
