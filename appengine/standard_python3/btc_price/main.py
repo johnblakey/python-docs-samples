@@ -17,10 +17,26 @@
 from flask import Flask
 from api_calls import add_btc_price
 
+# https://cloud.google.com/debugger/docs/setup/python
+# Note - install libraries globally
+try:
+    import googleclouddebugger
+    googleclouddebugger.enable(
+        breakpoint_enable_canary=True
+    )
+except ImportError:
+    pass
+
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
 app = Flask(__name__)
+
+
+@app.route('/')
+def endpoints():
+    """Return endpoint options."""
+    return "/btcprice"
 
 
 @app.route('/btcprice')

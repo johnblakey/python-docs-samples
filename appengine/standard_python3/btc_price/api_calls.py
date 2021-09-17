@@ -2,7 +2,7 @@ import time
 import logging
 
 from coinbase.wallet.client import Client
-from secrets import access_secret_version
+from access_secrets import access_secret_version
 from google.cloud import bigquery
 
 
