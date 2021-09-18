@@ -17,11 +17,12 @@ def send_sms():
 
     message = client.messages \
                     .create(
-                        body="Gas prices are cray cray! ;)",
+                        body="Gas prices are a thing! Do something.",
                         from_=twilio_phone,
                         to=receiver_phone
                     )
 
     logging.info("Message sent with twillio: {}".format(message))
+
 
     return "SMS sent"

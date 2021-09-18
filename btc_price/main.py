@@ -17,6 +17,7 @@
 from flask import Flask
 from api_calls import add_btc_price
 from push_notification import send_sms
+from level_watcher import gas_push_calculation
 
 # https://cloud.google.com/debugger/docs/setup/python
 # Note - install libraries globally
@@ -49,6 +50,11 @@ def price():
 def sms():
     """Return push notification."""
     return send_sms()
+
+@app.route('/check_gas')
+def gas():
+    """Return gas level check"""
+    return gas_push_calculation
 
 
 if __name__ == '__main__':
