@@ -27,9 +27,13 @@ def eth_gas_fee (temp):
 
   save_fee(current_base_fee)
 
+  # Activate logic to check if new value results in an sms sent
+  # create request acting as a browser
+  url = "https://personal-crypto-over-9000.wm.r.appspot.com/checkgas"
+  request = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
 
   # Must return string, dict, but not float
-  return string
+  return "Gas checked, uploaded, and alert checked."
   
 
 def save_fee(fee):
