@@ -16,6 +16,7 @@
 # [START gae_python3_app]
 from flask import Flask
 from api_calls import add_btc_price
+from push_notification import send_sms
 
 # https://cloud.google.com/debugger/docs/setup/python
 # Note - install libraries globally
@@ -43,6 +44,11 @@ def endpoints():
 def price():
     """Return BTC to USD Price."""
     return add_btc_price()
+
+@app.route('/sendsms')
+def sms():
+    """Return push notification."""
+    return send_sms()
 
 
 if __name__ == '__main__':

@@ -4,3 +4,4 @@ google-cloud-secret-manager==2.1.0
 google-cloud-bigquery==2.26.0
 google-python-cloud-debugger
 coinbase==2.1.0
+twilio
