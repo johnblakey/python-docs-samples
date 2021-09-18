@@ -14,11 +14,11 @@ def gas_push_calculation():
     table_id = "`personal-crypto-over-9000.cryptocurrencies.fees`"
     query_string = "SELECT * FROM " + table_id + "ORDER BY datetime DESC LIMIT 10"
 
+    # https://cloud.google.com/bigquery/docs/bigquery-storage-python-pandas
     dataframe = (
         bqclient.query(query_string)
         .result()
         .to_dataframe(
-            # https://cloud.google.com/bigquery/docs/bigquery-storage-python-pandas
             create_bqstorage_client=True,
         )
     )

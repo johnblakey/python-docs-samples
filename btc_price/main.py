@@ -52,7 +52,7 @@ def sms():
 @app.route('/checkgas')
 def gas():
     """Return gas level check"""
-    return gas_push_calculation
+    return gas_push_calculation()
 
 
 if __name__ == '__main__':
