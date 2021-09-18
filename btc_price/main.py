@@ -47,7 +47,7 @@ def price():
 @app.route('/sendsms')
 def sms():
     """Return push notification."""
-    return send_sms()
+    return send_sms("Test sms notice")
 
 @app.route('/checkgas')
 def gas():

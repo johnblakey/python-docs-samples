@@ -1,7 +1,7 @@
 Flask==2.0.1
 gunicorn==20.1.0
 google-cloud-secret-manager==2.1.0
-google-cloud-bigquery[bqstorage,pandas]
+google-cloud-bigquery
 google-python-cloud-debugger
 coinbase==2.1.0
 twilio

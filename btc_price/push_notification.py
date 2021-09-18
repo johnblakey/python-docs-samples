@@ -4,7 +4,7 @@ from access_secrets import access_secret_version
 from twilio.rest import Client
 
 
-def send_sms():
+def send_sms(message):
     # Get secrets from Secret Google Service
     project_id = "personal-crypto-over-9000"
     account = access_secret_version(project_id, "twilio-account-jb", "1")
@@ -15,14 +15,14 @@ def send_sms():
     # Create twilio client
     client = Client(account, token)
 
-    message = client.messages \
+    response = client.messages \
                     .create(
-                        body="Gas prices are a thing! Do something.",
+                        body=message,
                         from_=twilio_phone,
                         to=receiver_phone
                     )
 
-    logging.info("Message sent with twillio: {}".format(message))
+    logging.info("Message sent with twillio: {}".format(response))
 
 
     return "SMS sent"
