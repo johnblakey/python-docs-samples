@@ -23,9 +23,8 @@ from level_watcher import gas_push_calculation
 # Note - install libraries globally
 try:
     import googleclouddebugger
-    googleclouddebugger.enable(
-        breakpoint_enable_canary=True
-    )
+    # Disabled to allow debugging in Cloud Editor
+    googleclouddebugger.enable(breakpoint_enable_canary=False)
 except ImportError:
     pass
 
@@ -51,7 +50,7 @@ def sms():
     """Return push notification."""
     return send_sms()
 
-@app.route('/check_gas')
+@app.route('/checkgas')
 def gas():
     """Return gas level check"""
     return gas_push_calculation
@@ -61,6 +60,7 @@ if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
     # Engine, a webserver process such as Gunicorn will serve the app. This
     # can be configured by adding an `entrypoint` to app.yaml.
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    # Disabled to allow debugging in Cloud Editor - Python: Current File
+    app.run(host='127.0.0.1', port=8080, debug=False)
 # [END gae_python3_app]
 # [END gae_python38_app]
