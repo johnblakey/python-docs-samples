@@ -39,7 +39,6 @@ def endpoints():
     """Return endpoint options."""
     return "/btcprice"
 
-
 @app.route('/btcprice')
 def price():
     """Return BTC to USD Price."""
@@ -60,7 +59,7 @@ if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
     # Engine, a webserver process such as Gunicorn will serve the app. This
     # can be configured by adding an `entrypoint` to app.yaml.
-    # Disabled to allow debugging in Cloud Editor - Python: Current File
+    # Disabled to allow debugging in Cloud Editor
     app.run(host='127.0.0.1', port=8080, debug=False)
 # [END gae_python3_app]
 # [END gae_python38_app]

@@ -1,31 +1,32 @@
-# import time
 import logging
-import time
 
 from google.cloud import bigquery
+from push_notification import send_sms
 
 
 # Query db  project_id = "personal-crypto-over-9000"
 
 def gas_push_calculation():
     # Construct a BigQuery client object.
-    client = bigquery.Client()
+    bqclient = bigquery.Client()
 
     # ID of table to append to.
-    table_id = "personal-crypto-over-9000.cryptocurrencies.fees"
+    table_id = "`personal-crypto-over-9000.cryptocurrencies.fees`"
+    query_string = "SELECT * FROM " + table_id + "ORDER BY datetime DESC LIMIT 10"
 
-
-    query_job = client.query(
-        """
-        SELECT *
-        FROM `personal-crypto-over-9000.cryptocurrencies.fees`
-        LIMIT 10"""
+    dataframe = (
+        bqclient.query(query_string)
+        .result()
+        .to_dataframe(
+            # https://cloud.google.com/bigquery/docs/bigquery-storage-python-pandas
+            create_bqstorage_client=True,
+        )
     )
-
-    # Query db
-    results = query_job.result()
+    print(dataframe.head())
 
     # parse results
+    # if a message should be sent create message and send
+    # send_sms()
 
-    current_datetime = time.strftime('%Y-%m-%d %H:%M:%S')
+    return "Query finished"
     
